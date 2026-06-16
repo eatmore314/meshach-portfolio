@@ -22,7 +22,7 @@ module.exports = async (req, res) => {
     return res.status(400).json({ error: 'Invalid email address.' });
   }
 
-  const transporter = nodemailer.createTransporter({
+  const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: process.env.EMAIL_USER,
