@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meshach Jacobs — Creative Developer</title>
+  <meta name="description" content="Meshach Jacobs — Full-Stack & Creative Developer building digital experiences that leave a mark." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+
+  <!-- Three.js -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <!-- GSAP + plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <!-- Lenis smooth scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       PRELOADER
+  ═══════════════════════════════════════ -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-word">
+        <span>Loading</span>
+      </div>
+      <div class="preloader-bar-wrap">
+        <div class="preloader-bar" id="preloaderBar"></div>
+      </div>
+      <div class="preloader-counter" id="preloaderCounter">000</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       CUSTOM CURSOR
+  ═══════════════════════════════════════ -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- ═══════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════ -->
+  <nav class="nav" id="nav">
+    <a href="#hero" class="nav-logo" aria-label="Meshach Jacobs Home">
+      <img src="assets/mj-logo-cropped.png" alt="MJ" class="logo-mark" />
+    </a>
+
+    <div class="nav-links">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#work" class="nav-link">Work</a>
+      <a href="#skills" class="nav-link">Stack</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+
+    <a href="#contact" class="nav-cta magnetic">Let's Talk</a>
+
+    <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-bg"></div>
+    <nav class="mobile-nav">
+      <a href="#about" class="mobile-nav-link">About</a>
+      <a href="#work" class="mobile-nav-link">Work</a>
+      <a href="#skills" class="mobile-nav-link">Stack</a>
+      <a href="#contact" class="mobile-nav-link">Contact</a>
+    </nav>
+    <div class="mobile-menu-footer">
+      <a href="mailto:jacobs.meshachiv@gmail.com">jacobs.meshachiv@gmail.com</a>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       THREE.JS CANVAS (fixed background)
+  ═══════════════════════════════════════ -->
+  <canvas id="canvas"></canvas>
+
+  <!-- ═══════════════════════════════════════
+       MAIN CONTENT
+  ═══════════════════════════════════════ -->
+  <main>
+
+    <!-- HERO ─────────────────────────────── -->
+    <section id="hero" class="hero">
+      <div class="hero-content">
+        <p class="hero-eyebrow" data-reveal>
+          <span class="eyebrow-line"></span>
+          AI Engineer &amp; Full-Stack Developer
+        </p>
+
+        <h1 class="hero-title">
+          <span class="hero-title-line clip-line">
+            <span class="word-wrap">Meshach</span>
+          </span>
+          <span class="hero-title-line clip-line">
+            <span class="word-wrap">Jacobs</span>
+          </span>
+        </h1>
+
+        <div class="hero-bottom" data-reveal>
+          <div class="hero-left-col">
+            <div class="availability-badge">
+              <div class="badge-dot"></div>
+              <span>Available for new projects</span>
+            </div>
+            <p class="hero-sub">
+              Building AI-powered products<br />
+              with modern full-stack architecture.
+            </p>
+          </div>
+          <div class="hero-actions">
+            <a href="#work" class="btn-pill magnetic">View Work</a>
+            <a href="#contact" class="btn-ghost">Start a Project →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="hero-scroll-indicator">
+        <div class="scroll-label">Scroll</div>
+        <div class="scroll-track"><div class="scroll-thumb"></div></div>
+      </div>
+    </section>
+
+    <!-- MARQUEE ────────────────────────────── -->
+    <div class="marquee-wrapper">
+      <div class="marquee-track" id="marqueeTrack">
+        <div class="marquee-set">
+          <span class="marquee-item">AI Engineering</span>
+          <span class="marquee-sep">✦</span>
+          <span class="marquee-item">Next.js &amp; React</span>
+          <span class="marquee-sep">✦</span>
+          <span class="marquee-item">Anthropic Claude Code</span>
+          <span class="marquee-sep">✦</span>
+          <span class="marquee-item">TypeScript</span>
+          <span class="marquee-sep">✦</span>
+          <span class="marquee-item">Supabase &amp; PostgreSQL</span>
+          <span class="marquee-sep">✦</span>
+          <span class="marquee-item">Full-Stack Development</span>
+          <span class="marquee-sep">✦</span>
+          <span class="marquee-item">Vercel &amp; Railway</span>
+          <span class="marquee-sep">✦</span>
+          <span class="marquee-item">SaaS Products</span>
+          <span class="marquee-sep">✦</span>
+        </div>
+        <!-- Cloned by JS for seamless loop -->
+      </div>
+    </div>
+
+    <!-- ABOUT ─────────────────────────────── -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">01 — About</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-left">
+            <h2 class="about-heading" data-split>
+              I build things<br />that matter.
+            </h2>
+            <p class="about-bio">
+              I'm Meshach Jacobs — an AI engineer and full-stack developer specialising in
+              building AI-powered SaaS products with modern architecture. I work with the
+              Claude Code, Next.js, Supabase, and TypeScript to ship products that are
+              fast, secure, and genuinely useful.
+            </p>
+            <p class="about-bio">
+              From AI-driven document processors to multi-tenant platforms with row-level
+              security, I focus on the full picture — clean UI, solid backend, and smart
+              automation that actually saves people time.
+            </p>
+
+            <div class="about-stats">
+              <div class="stat">
+                <div class="stat-number" data-count="3" data-suffix="+">3+</div>
+                <div class="stat-label">Years Experience</div>
+              </div>
+              <div class="stat">
+                <div class="stat-number" data-count="20" data-suffix="+">20+</div>
+                <div class="stat-label">Projects Shipped</div>
+              </div>
+              <div class="stat">
+                <div class="stat-number" data-count="100" data-suffix="%">100%</div>
+                <div class="stat-label">Client Satisfaction</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-right">
+            <div class="skills-list-label">Core Proficiencies</div>
+            <div class="skills-list">
+              <div class="skill-row">
+                <span class="skill-name">Next.js / React</span>
+                <div class="skill-track"><div class="skill-fill" data-width="95"></div></div>
+                <span class="skill-pct">95</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">Claude Code / Codex</span>
+                <div class="skill-track"><div class="skill-fill" data-width="92"></div></div>
+                <span class="skill-pct">92</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">TypeScript</span>
+                <div class="skill-track"><div class="skill-fill" data-width="90"></div></div>
+                <span class="skill-pct">90</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">Supabase / PostgreSQL</span>
+                <div class="skill-track"><div class="skill-fill" data-width="88"></div></div>
+                <span class="skill-pct">88</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">Node.js / APIs</span>
+                <div class="skill-track"><div class="skill-fill" data-width="85"></div></div>
+                <span class="skill-pct">85</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">Tailwind / shadcn</span>
+                <div class="skill-track"><div class="skill-fill" data-width="90"></div></div>
+                <span class="skill-pct">90</span>
+              </div>
+            </div>
+
+            <div class="about-portrait-frame" data-reveal>
+              <div class="portrait-inner">
+                <img src="assets/meshach.jpg" alt="Meshach Jacobs" />
+                <div class="portrait-tag">
+                  <span>Open to Work</span>
+                  <span class="portrait-tag-dot"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK ──────────────────────────────── -->
+    <section id="work" class="work">
+      <div class="container">
+        <div class="work-header">
+          <div class="section-header">
+            <p class="section-label">02 — Selected Work</p>
+          </div>
+          <h2 class="work-title" data-reveal>Recent Projects</h2>
+          <p class="work-subtitle" data-reveal>A selection of work I'm proud of. More available on request.</p>
+        </div>
+      </div>
+
+      <!-- Horizontal Scroll Container -->
+      <div class="work-scroll-wrap" id="workScrollWrap">
+        <div class="work-scroll-inner" id="workScrollInner">
+
+          <!-- Project 01 — CampusCore -->
+          <article class="project-card" data-reveal>
+            <div class="project-img-wrap">
+              <img src="assets/preview-campuscore.jpg" alt="CampusCore" class="project-img" />
+              <div class="project-overlay">
+                <span class="project-view-label">View Project →</span>
+              </div>
+            </div>
+            <div class="project-meta">
+              <span class="project-num">01</span>
+              <div class="project-info">
+                <h3 class="project-title">CampusCore</h3>
+                <p class="project-desc">Multi-tenant student management platform with role-based access, row-level security, document storage, and FERPA-aware authentication flows.</p>
+                <div class="project-tags">
+                  <span class="tag">Next.js</span>
+                  <span class="tag">Supabase</span>
+                  <span class="tag">PostgreSQL</span>
+                  <span class="tag">TypeScript</span>
+                </div>
+              </div>
+              <a href="https://campuscore-three.vercel.app/" target="_blank" rel="noopener" class="project-link magnetic">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 16 L16 4 M16 4 H8 M16 4 V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 02 — InstaCourse -->
+          <article class="project-card" data-reveal>
+            <div class="project-img-wrap">
+              <img src="assets/preview-instacourse.jpg" alt="InstaCourse" class="project-img" />
+              <div class="project-overlay">
+                <span class="project-view-label">View Project →</span>
+              </div>
+            </div>
+            <div class="project-meta">
+              <span class="project-num">02</span>
+              <div class="project-info">
+                <h3 class="project-title">InstaCourse</h3>
+                <p class="project-desc">AI-native platform for creators to build and sell communities, courses, and digital products — with AI-assisted course generation in minutes.</p>
+                <div class="project-tags">
+                  <span class="tag">Next.js</span>
+                  <span class="tag">Claude Code</span>
+                  <span class="tag">Supabase</span>
+                  <span class="tag">TypeScript</span>
+                </div>
+              </div>
+              <a href="https://instacourse.app" target="_blank" rel="noopener" class="project-link magnetic">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 16 L16 4 M16 4 H8 M16 4 V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 03 — ProposalAI -->
+          <article class="project-card" data-reveal>
+            <div class="project-img-wrap">
+              <img src="assets/preview-proposalai.jpg" alt="ProposalAI" class="project-img" />
+              <div class="project-overlay">
+                <span class="project-view-label">View Project →</span>
+              </div>
+            </div>
+            <div class="project-meta">
+              <span class="project-num">03</span>
+              <div class="project-info">
+                <h3 class="project-title">ProposalAI</h3>
+                <p class="project-desc">Upload a client brief and get a complete project proposal — scope, timeline, pricing, agreement draft, and discovery questions — in seconds.</p>
+                <div class="project-tags">
+                  <span class="tag">Next.js</span>
+                  <span class="tag">Claude Code</span>
+                  <span class="tag">TypeScript</span>
+                  <span class="tag">Tailwind</span>
+                </div>
+              </div>
+              <a href="https://pro-posalai.vercel.app/" target="_blank" rel="noopener" class="project-link magnetic">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 16 L16 4 M16 4 H8 M16 4 V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 04 — Vanguard AI Bootcamp -->
+          <article class="project-card" data-reveal>
+            <div class="project-img-wrap">
+              <img src="assets/preview-vanguard.jpg" alt="Vanguard AI Bootcamp" class="project-img" />
+              <div class="project-overlay">
+                <span class="project-view-label">View Project →</span>
+              </div>
+            </div>
+            <div class="project-meta">
+              <span class="project-num">04</span>
+              <div class="project-info">
+                <h3 class="project-title">Vanguard AI Bootcamp</h3>
+                <p class="project-desc">14-week AI operator program teaching entrepreneurs to build and sell AI systems — chatbots, SDR agents, automations, and productized AI services.</p>
+                <div class="project-tags">
+                  <span class="tag">Next.js</span>
+                  <span class="tag">Supabase</span>
+                  <span class="tag">TypeScript</span>
+                  <span class="tag">Tailwind</span>
+                </div>
+              </div>
+              <a href="https://vanguardaibootcamp.com/" target="_blank" rel="noopener" class="project-link magnetic">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 16 L16 4 M16 4 H8 M16 4 V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+        <div class="work-drag-hint" id="workDragHint">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          <span>Drag to explore</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- STACK ─────────────────────────────── -->
+    <section id="skills" class="skills-section">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">03 — Tech Stack</p>
+        </div>
+
+        <h2 class="skills-heading" data-reveal>Tools I work with</h2>
+
+        <div class="stack-grid">
+          <div class="stack-col">
+            <div class="stack-col-label">AI Engineering</div>
+            <ul class="stack-list">
+              <li>Claude Code</li>
+              <li>Anthropic API</li>
+              <li>GPT-5 / ChatGPT</li>
+              <li>OCR Pipelines</li>
+              <li>AI Workflows</li>
+              <li>Automation</li>
+            </ul>
+          </div>
+          <div class="stack-col">
+            <div class="stack-col-label">Frontend</div>
+            <ul class="stack-list">
+              <li>Next.js &amp; React</li>
+              <li>TypeScript</li>
+              <li>Tailwind CSS</li>
+              <li>shadcn/ui</li>
+              <li>Framer Motion</li>
+              <li>Zod</li>
+            </ul>
+          </div>
+          <div class="stack-col">
+            <div class="stack-col-label">Backend</div>
+            <ul class="stack-list">
+              <li>Node.js</li>
+              <li>Next.js API Routes</li>
+              <li>Supabase</li>
+              <li>PostgreSQL &amp; RLS</li>
+              <li>Authentication</li>
+              <li>REST APIs</li>
+            </ul>
+          </div>
+          <div class="stack-col">
+            <div class="stack-col-label">Platform &amp; Tools</div>
+            <ul class="stack-list">
+              <li>Vercel</li>
+              <li>Railway</li>
+              <li>GitHub &amp; Git</li>
+              <li>Figma</li>
+              <li>Playwright</li>
+              <li>Vitest</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Process strip -->
+        <div class="process-strip">
+          <div class="process-step">
+            <span class="process-num">01</span>
+            <span class="process-name">Discovery</span>
+          </div>
+          <div class="process-arrow">→</div>
+          <div class="process-step">
+            <span class="process-num">02</span>
+            <span class="process-name">Design</span>
+          </div>
+          <div class="process-arrow">→</div>
+          <div class="process-step">
+            <span class="process-num">03</span>
+            <span class="process-name">Build</span>
+          </div>
+          <div class="process-arrow">→</div>
+          <div class="process-step">
+            <span class="process-num">04</span>
+            <span class="process-name">Launch</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT ───────────────────────────── -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-label">04 — Contact</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-left">
+            <h2 class="contact-heading" data-split>
+              Let's build<br />something<br />great.
+            </h2>
+            <a href="mailto:jacobs.meshachiv@gmail.com" class="contact-email-link">
+              jacobs.meshachiv@gmail.com
+            </a>
+            <div class="contact-socials" data-reveal>
+              <a href="https://github.com/eatmore314" target="_blank" rel="noopener" class="social-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02.005 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.25 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.93.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+              <a href="https://www.linkedin.com/in/meshach-jacobs-9124b833a/" target="_blank" rel="noopener" class="social-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.44-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.11 20.45H3.56V9h3.55v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45C23.2 24 24 23.23 24 22.27V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+                LinkedIn
+              </a>
+              <a href="https://twitter.com/" target="_blank" rel="noopener" class="social-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 3h3.53l-7.71 8.82L23 21h-7.1l-5.56-7.27L4.1 21H.57l8.25-9.43L1 3h7.28l5.02 6.64L18.24 3zm-1.24 16.2h1.96L7.1 4.97H4.99l12.01 14.23z"/></svg>
+                Twitter
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-right" data-reveal>
+            <form class="contact-form" id="contactForm" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Your Name</label>
+                  <input type="text" id="name" name="name" placeholder="John Smith" required autocomplete="off" />
+                  <div class="form-underline"></div>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" name="email" placeholder="hello@example.com" required autocomplete="off" />
+                  <div class="form-underline"></div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="project">Project Type</label>
+                  <select id="project" name="project">
+                    <option value="" disabled selected>Select type…</option>
+                    <option>Web Application</option>
+                    <option>Mobile App</option>
+                    <option>E-Commerce</option>
+                    <option>Creative / Interactive</option>
+                    <option>Consulting</option>
+                    <option>Other</option>
+                  </select>
+                  <div class="form-underline"></div>
+                </div>
+                <div class="form-group">
+                  <label for="budget">Budget Range</label>
+                  <select id="budget" name="budget">
+                    <option value="" disabled selected>Select range…</option>
+                    <option>Under $5,000</option>
+                    <option>$5,000 – $15,000</option>
+                    <option>$15,000 – $30,000</option>
+                    <option>$30,000+</option>
+                  </select>
+                  <div class="form-underline"></div>
+                </div>
+              </div>
+              <div class="form-group full-width">
+                <label for="message">Tell me about your project</label>
+                <textarea id="message" name="message" rows="4" placeholder="Describe what you're building…" required></textarea>
+                <div class="form-underline"></div>
+              </div>
+              <button type="submit" class="btn-submit magnetic" id="submitBtn">
+                <span class="btn-submit-text">Send Message</span>
+                <span class="btn-submit-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <a href="#hero" class="footer-logo" aria-label="Back to top">
+          <img src="assets/mj-logo-cropped.png" alt="MJ" class="footer-logo-img" />
+        </a>
+        <p class="footer-copy">© 2025 Meshach Jacobs. All rights reserved.</p>
+      </div>
+      <div class="footer-right">
+        <a href="#hero" class="back-to-top" id="backToTop">
+          Back to top
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M2 6l4-4 4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
