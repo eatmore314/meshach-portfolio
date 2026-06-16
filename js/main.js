@@ -350,7 +350,7 @@ function initStatCounters() {
       onEnter() {
         gsap.to(obj, {
           val: target,
-          duration: 2.4,
+          duration: Math.log10(target + 1) * 1.2,
           ease: 'power2.out',
           onUpdate() {
             el.textContent = Math.round(obj.val) + suffix;
