@@ -863,14 +863,13 @@ select {
 .portrait-inner {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 3.5;
+  aspect-ratio: 1 / 1;
   background: var(--black-2);
   border: 1px solid var(--border-md);
   overflow: hidden;
 }
 
 .portrait-inner img {
-  object-position: top center;
   transition: transform 0.8s var(--ease-out);
 }
 
@@ -1502,7 +1501,7 @@ select {
   }
 
   .portrait-inner {
-    aspect-ratio: 16 / 7;
+    aspect-ratio: 1 / 1;
   }
 
   .contact-grid {
@@ -1669,7 +1668,7 @@ select {
   }
 
   .portrait-inner {
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 1 / 1;
   }
 
   /* ── Work ── */
